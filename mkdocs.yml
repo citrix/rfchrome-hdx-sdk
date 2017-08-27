@@ -1,5 +1,5 @@
-site_name: HDX SDK for Citrix Receiver for Chrome 2.4
-site_description: Reference guide for HDX SDK for Citrix Receiver for Chrome 2.4
+site_name: HDX SDK for Citrix Receiver for Chrome 2.5
+site_description: Reference guide for HDX SDK for Citrix Receiver for Chrome 2.5
 theme_dir: citrix-sdk
 
 markdown_extensions:
@@ -11,3 +11,9 @@ markdown_extensions:
 pages:
 - Overview: index.md
 - Capabilities: capabilities.md
+- Classes: 
+  - ReceiverError: receiver-error.md
+  - Session: session.md
+- Events: events.md
+- Namespace Receiver: namespace-receiver.md
+- Global: global.md
