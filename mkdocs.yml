@@ -1,5 +1,5 @@
-site_name: HDX SDK for Citrix Receiver for Chrome 2.5.1
-site_description: Reference guide for HDX SDK for Citrix Receiver for Chrome 2.5.1
+site_name: HDX SDK for Citrix Receiver for Chrome 2.5.2
+site_description: Reference guide for HDX SDK for Citrix Receiver for Chrome 2.5.2
 theme_dir: citrix-sdk
 
 markdown_extensions:

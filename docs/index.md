@@ -1,9 +1,10 @@
-# HDX SDK for Citrix Receiver for Chrome 2.5.1
+# HDX SDK for Citrix Receiver for Chrome 2.5.2
 
 Citrix Receiver for Chrome provides the HDX SDK as a JavaScript file that you can include in third-party Chrome apps. The HDX SDK provides an API to launch and interact with the XenApp and XenDesktop sessions from third-party Chrome apps.
 
 The HDX SDK for Chrome provides the following capabilities:
 
+* Embed Receiver sessions in third-party apps that are running in kiosk mode on Google Chromebooks.
 * Launch an HDX SDK session in regular mode (opens the session in a new window) or in embedded mode inside third-party Chrome apps (using appview).
 * Receive events from a session on connect, disconnect, and errors.
 * Change the resolution of the launched session dynamically.
@@ -15,7 +16,6 @@ For the latest HDX SDK APIs and examples, see the [download](https://www.citrix.
 
 For HDX SDK API documentation for Chrome, see [Capabilities](./capabilities.md).
  
-
 ## Prerequisites 
 
 Citrix Receiver for Chrome supports only the whitelisted third-party Chrome apps. You can whitelist a third-party Chrome app by adding the policy file for Citrix Receiver for Chrome using Chrome management settings
@@ -28,7 +28,7 @@ To whitelist a third-party Chrome app, do the following:
 
 The sample policy.txt file to whitelist the third-party Chrome app is as below:
 
-```
+```json
 {
 	"settings": {
 
@@ -52,14 +52,34 @@ The sample policy.txt file to whitelist the third-party Chrome app is as below:
 
 }
 ```
+
 !!!tip "Note"
 		&lt;3rdParty_App1_ExtnID&gt; is used as an example for the name of externalApps and can send messages to Citrix Receiver for Chrome. Get your appid from the `chrome://extensions` site.
+
+## Embedding Receiver for Chrome sessions within a third-party app in kiosk mode
+
+To embed a Receiver session within a third-party app that is running in kiosk mode, perform the following steps:
+
+&#49;. Add the Receiver ID in the manifest.json file of the third-party Chrome app. Example:
+
+```json
+"kiosk_enabled": true,
+   "kiosk_secondary_apps": [
+   {
+      "id": "<receiver_for_chrome_id>"
+    }
+]
+```
+&#50;. Enable the Auto-Launch Kiosk App for the third-party Chrome app in the Google Admin console.For more information, see [https://support.google.com/chrome/a/answer/3316168?hl=en](https://support.google.com/chrome/a/answer/3316168?hl=en)
+
+!!!tip "Note"
+		In this scenario, Receiver policies that are set in the Google Admin console will not be pushed to the device. 
 
 ## Additional references
 
 Citrix Receiver for Chrome uses message communication provided by Chrome OS. For more details, see the following links:
 
-* [https://developer.chrome.com/apps/tags/appview](https://developer.chrome.com/apps/tags/appview) 
+1. [https://developer.chrome.com/apps/tags/appview](https://developer.chrome.com/apps/tags/appview) 
 2.	[https://developer.chrome.com/extensions/runtime#event-onMessageExternal](https://developer.chrome.com/extensions/runtime#event-onMessageExternal) 
 3.	[https://developer.chrome.com/extensions/runtime#method-sendMessage](https://developer.chrome.com/extensions/runtime#method-sendMessage)
 4.	For more details, see Manage Chrome Apps by organizational unit on Google support.  
